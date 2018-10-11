@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>personList</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h1>用户列表</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Age</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="person : ${persons}">
+            <th scope="row" th:text="${person.id}">1</th>
+            <td th:text="${person.userName}">neo</td>
+            <td th:text="${person.password}">Otto</td>
+            <td th:text="${person.age}">6</td>
+            <td><a th:href="@{/toEdit(id=${person.id})}">edit</a></td>
+            <td><a th:href="@{/delete(id=${person.id})}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/toAdd" th:href="@{/toAdd}" class="btn btn-info">add</a>
+        <!-- <span th:text="${#dates.format('2018/01/01', 'yyyy-MM-dd')}">4564546</span>  -->
+    </div>
+</div>
+
+</body>
+</html>
